@@ -8,3 +8,34 @@ from abc import ABC, abstractmethod
 class BaseCharacter(ABC):
     def __init__(self, character_name, base_health):
         self.character_name = character_name
+
+        # ==========================================
+        # 2. ENCAPSULATION
+        # ==========================================
+        # Using double underscores (__) hides these attributes from the outside.
+        # They can only be modified through the class's methods (getters/setters).
+        self.__current_health = base_health
+        self.__is_alive = True
+
+    @abstractmethod
+    def display_character_stats(self):
+        pass
+
+    @abstractmethod
+    def perform_attack(self):
+        pass
+
+    # Getter method to safely access private data
+    def get_health_status(self):
+        return self.__current_health
+
+    # Setter method to safely modify private data
+    def take_damage(self, damage_amount):
+        if damage_amount > 0:
+            self.__current_health -= damage_amount
+            if self.__current_health <= 0:
+                self.__current_health = 0
+                self.__is_alive = False
+
+    def check_if_alive(self):
+        return self.__is_alive
