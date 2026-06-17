@@ -75,3 +75,19 @@ class Goblin(BaseCharacter):
     def perform_attack(self):
         print(f"{self.character_name} swings a heavy club!")
         return self.physical_strength * 1.2
+
+# ==========================================
+# DEMONSTRATION RUN
+# ==========================================
+if __name__ == "__main__":
+    player_one = Wizard(character_name="Merlin", magic_power=50)
+    enemy_character = Goblin(character_name="Grok", physical_strength=40)
+
+    player_one.display_character_stats()
+    enemy_character.display_character_stats()
+
+    attack_damage = player_one.perform_attack()
+    enemy_character.take_damage(damage_amount=attack_damage)
+
+    print("\n--- After the Attack ---")
+    enemy_character.display_character_stats()
