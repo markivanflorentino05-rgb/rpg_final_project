@@ -39,3 +39,14 @@ class BaseCharacter(ABC):
 
     def check_if_alive(self):
         return self.__is_alive
+
+# ==========================================
+# 3. INHERITANCE
+# ==========================================
+# The Wizard and Goblin classes inherit from the BaseCharacter class.
+# They get all the methods and attributes of the parent class automatically.
+class Wizard(BaseCharacter):
+    def __init__(self, character_name, magic_power):
+        # Calling the parent class's constructor
+        super().__init__(character_name, base_health=100)
+        self.magic_power = magic_power
