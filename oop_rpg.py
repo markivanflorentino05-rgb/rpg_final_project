@@ -50,3 +50,28 @@ class Wizard(BaseCharacter):
         # Calling the parent class's constructor
         super().__init__(character_name, base_health=100)
         self.magic_power = magic_power
+
+    # ==========================================
+    # 4. POLYMORPHISM
+    # ==========================================
+    # Both child classes share the same method names (display_character_stats, perform_attack)
+    # but they behave differently based on the specific class calling them.
+    def display_character_stats(self):
+        print(f"Wizard: {self.character_name} | Health: {self.get_health_status()} | Magic: {self.magic_power}")
+
+    def perform_attack(self):
+        print(f"{self.character_name} casts a fireball!")
+        return self.magic_power * 1.5
+
+class Goblin(BaseCharacter):
+    def __init__(self, character_name, physical_strength):
+        super().__init__(character_name, base_health=120)
+        self.physical_strength = physical_strength
+
+    # Overriding the abstract methods differently (Polymorphism)
+    def display_character_stats(self):
+        print(f"Goblin: {self.character_name} | Health: {self.get_health_status()} | Strength: {self.physical_strength}")
+
+    def perform_attack(self):
+        print(f"{self.character_name} swings a heavy club!")
+        return self.physical_strength * 1.2
